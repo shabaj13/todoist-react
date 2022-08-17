@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { MdAdd } from "react-icons/md";
 import "./todolist.css";
 import List from "../component/List";
-import { BiEdit } from "react-icons/bi";
 
 //localStorage to get data
 const getItems = () => { 
@@ -13,8 +12,6 @@ const getItems = () => {
 const TodoList = () => {
   const [item, setItem] = useState("");
   const [listItem, setListItem] = useState(getItems);
-  const [toggle, setToggle] = useState(true);
-  const [itemEdit, setItemEdit] = useState(null);
 
 
   const InputEvent = (e) => {
@@ -24,29 +21,8 @@ const TodoList = () => {
 // Add list
   const addItem = () => {
     setListItem((curElem) => {
-      if (!item) {
-
-      } else if (item && !toggle) { 
-        console.log(item);
-        setListItem(
-          listItem.map((elem) => {
-            if (elem.id === itemEdit) {
-              return {...elem, item:item}
-            }
-            return elem;
-            
-          })
-          
-        )
-        
-        setToggle(true);
-        setItem("");
-        setItemEdit(null);
-      } else
-      {
         const allItem = { id: new Date().getTime().toString(), item: item };
         return [...curElem, allItem];
-      }
     });
     setItem("");
   };
@@ -61,16 +37,7 @@ const TodoList = () => {
     });
   };
 
-  //edit List
-  const editItem = (index) => {
-    let editList = listItem.find((elem) => {
-      return elem.id === index;
-    });
-    console.log(editList);
-    setToggle(false);
-    setItem(editList.item);
-    setItemEdit(index)
-  }
+
 
   //upload data to localStorage
   useEffect(() => {
@@ -92,17 +59,13 @@ const TodoList = () => {
               onChange={InputEvent}
               value={item}
             />
-
-            {toggle ? <button onClick={addItem}><MdAdd /></button> :
-              <button onClick={addItem}><BiEdit/> 
-              </button>}     
+             <button onClick={addItem}><MdAdd /></button>   
           </div>
 
           <div className="listDiv">
             {listItem.map((currElem) => {
               return (
-                <List text={currElem.item} key={currElem.id} id={currElem.id} onSelect={delItem}
-                  onEdit={editItem} />
+                <List text={currElem.item} key={currElem.id} id={currElem.id} onSelect={delItem} />
               );
             })}
           </div>
