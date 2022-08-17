@@ -1,0 +1,48 @@
+.container{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color:rgb(53,63,91);
+}
+.content{
+  width:270px;
+}
+.headerDiv{
+  display: flex;
+  justify-content: center;
+  margin: 0 8px;
+  color: #f9f9f9;
+}
+
+
+.inputDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 8px 4px;
+}
+.inputDiv input {
+  font-size: 18px;
+  width: 100%;
+  background-color: #252C40;
+  color: #f9f9f9;
+  padding: 4px 6px;
+  border: 4px solid #284E84;
+  border-right: none ;
+  text-align: center;
+}
+.inputDiv button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: fit-content;
+  background-color: #473f75;
+  font-size: 27px;
+  padding: 4px 6px;
+  border: 4px solid #284E84;
+  border-left: none;
+  color: #f9f9f9;
+  cursor: pointer;
+}

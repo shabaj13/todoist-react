@@ -1,20 +1,18 @@
-import React from 'react'
+import React from "react";
 import { BiEdit, BiTrash } from "react-icons/bi";
-import './list.css'
-const List = () => {
+import "./list.css";
+const List = ({text,id,onSelect,onEdit}) => {
   return (
     <>
-      <div className="listDiv">
-            <div className="listContent">
-              <p>Your list</p>
-              <div className="opt">
-                <BiEdit />
-                <BiTrash/>
-              </div>
-            </div>
-          </div>
+      <div className="listContent">
+        <p>{ text}</p>
+        <div className="opt">
+          <BiEdit className="editBtn" onClick={() => { onEdit(id) }}/>
+          <BiTrash className="delBtn"  onClick={()=> {onSelect(id)}}/>
+        </div>
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default List
+export default List;
